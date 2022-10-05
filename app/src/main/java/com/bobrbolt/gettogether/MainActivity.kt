@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import com.bobrbolt.gettogether.mainFragments.FeedFragment
 import com.bobrbolt.gettogether.mainFragments.MapsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,10 +15,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.placeholder, FeedFragment.newInstance())
-            .commit()
+
+        findViewById<BottomNavigationView>(R.id.bottomNav).setOnItemSelectedListener {
+            if (it.itemId == R.id.feedButton)
+                setFragment(FeedFragment.newInstance())
+            else
+                setFragment(MapsFragment.newInstance())
+            return@setOnItemSelectedListener true
+        }
 
         // доступ:
 //        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION
@@ -27,19 +32,11 @@ class MainActivity : AppCompatActivity() {
 //            return
 //        }
     }
-    
-    fun clickFeed(item: MenuItem){
+
+    private fun setFragment(fragment: Fragment){
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.placeholder, FeedFragment.newInstance())
+            .replace(R.id.placeholder, fragment)
             .commit()
-        findViewById<BottomNavigationView>(R.id.bottomNav).selectedItemId = R.id.feedButton
-    }
-    fun clickMap(item: MenuItem){
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.placeholder, MapsFragment.newInstance())
-            .commit()
-        findViewById<BottomNavigationView>(R.id.bottomNav).selectedItemId = R.id.mapButton
     }
 }
