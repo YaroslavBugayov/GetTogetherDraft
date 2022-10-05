@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setFragment(FeedFragment.newInstance())
         findViewById<BottomNavigationView>(R.id.bottomNav).setOnItemSelectedListener {
             if (it.itemId == R.id.feedButton)
                 setFragment(FeedFragment.newInstance())
@@ -23,14 +24,6 @@ class MainActivity : AppCompatActivity() {
                 setFragment(MapsFragment.newInstance())
             return@setOnItemSelectedListener true
         }
-
-        // доступ:
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-//                LOCATION_REQUEST_CODE)
-//            return
-//        }
     }
 
     private fun setFragment(fragment: Fragment){
