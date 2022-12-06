@@ -15,7 +15,10 @@ import com.bobrbolt.gettogether.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 
-class LoginFragment(applicationContext: Context, private val bottomNav: BottomNavigationView) : Fragment() {
+class LoginFragment(
+    applicationContext: Context,
+    private val bottomNav: BottomNavigationView
+    ) : Fragment() {
 
     val url = "http://10.0.2.2:8080/login"
     private val requestQueue = Volley.newRequestQueue(applicationContext)
