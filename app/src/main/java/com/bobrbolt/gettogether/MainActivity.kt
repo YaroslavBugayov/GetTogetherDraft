@@ -1,23 +1,29 @@
 package com.bobrbolt.gettogether
 
-import android.Manifest
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.core.app.ActivityCompat
+import android.view.View
 import androidx.fragment.app.Fragment
-import com.bobrbolt.gettogether.mainFragments.FeedFragment
+import com.bobrbolt.gettogether.mainFragments.LoginFragment
 import com.bobrbolt.gettogether.mainFragments.MapsFragment
+import com.bobrbolt.gettogether.mainFragments.FeedFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+
+        bottomNav.visibility = View.GONE
+
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.mainLayout, LoginFragment(applicationContext, bottomNav))
+            .commit()
 
         setFragment(FeedFragment.newInstance())
-        findViewById<BottomNavigationView>(R.id.bottomNav).setOnItemSelectedListener {
+        bottomNav.setOnItemSelectedListener {
             if (it.itemId == R.id.feedButton)
                 setFragment(FeedFragment.newInstance())
             else
