@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -15,40 +16,27 @@ import com.bobrbolt.gettogether.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 
-class LoginFragment(
-    private val applicationContext: Context
-    ) : Fragment() {
+class RegisterFragment(applicationContext: Context) : Fragment() {
 
-    val url = "http://10.0.2.2:8080/login"
+    val url = "http://10.0.2.2:8080/register"
     private val requestQueue = Volley.newRequestQueue(applicationContext)
-    private lateinit var loginButton: Button
-    private lateinit var registerButton: Button
-    private lateinit var inputLogin: EditText
-    private lateinit var inputPassword: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val inf = inflater.inflate(R.layout.fragment_login, container, false)
-        loginButton = inf.findViewById(R.id.buttonSignIn)
-        registerButton = inf.findViewById(R.id.buttonSignUp)
-        inputLogin = inf.findViewById(R.id.inputLogin)
-        inputPassword = inf.findViewById(R.id.inputPassword)
+        val inf = inflater.inflate(R.layout.fragment_register, container, false)
+        inf.findViewById<Button>(R.id.buttonSignUpRegister).setOnClickListener { signUp() }
+        inf.findViewById<ImageButton>(R.id.buttonBack).setOnClickListener { back() }
         return inf
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        loginButton.setOnClickListener { login() }
-        registerButton.setOnClickListener { signUp() }
-    }
+    private fun signUp() {
+        val email = requireActivity().findViewById<EditText>(R.id.inputRegisterEmail).text.toString()
+        val login = requireActivity().findViewById<EditText>(R.id.inputRegisterLogin).text.toString()
+        val password = requireActivity().findViewById<EditText>(R.id.inputRegisterPassword).text.toString()
 
-    private fun login() {
-        val login = inputLogin.text.toString()
-        val password = inputPassword.text.toString()
-
-        val authJson = JSONObject("{\"login\":\"${login}\", \"password\":\"${password}\"}")
+        val authJson = JSONObject("{\"login\":\"${login}\", \"password\":\"${password}\", \"email\":\"${email}\"}")
         val request = object : JsonObjectRequest(
             Method.POST,
             url,
@@ -71,11 +59,11 @@ class LoginFragment(
         requestQueue.add(request)
     }
 
-    private fun signUp() {
-        requireActivity()
-            .supportFragmentManager
+    private fun back() {
+        requireActivity().supportFragmentManager
             .beginTransaction()
-            .replace(R.id.mainLayout, RegisterFragment(applicationContext))
+            .replace(R.id.mainLayout, LoginFragment(requireContext().applicationContext))
             .commit()
     }
+
 }
