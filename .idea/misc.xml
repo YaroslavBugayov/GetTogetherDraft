@@ -10,8 +10,11 @@
         <entry key="..\:/Programming/Android/GetTogether/app/src/main/res/menu/bottom_menu.xml" value="0.234375" />
         <entry key="..\:/Projects/Android/GetTogether/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Projects/Android/GetTogether/app/src/main/res/layout/fragment_feed.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/GetTogether/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Projects/Android/GetTogether/app/src/main/res/layout/fragment_maps.xml" value="0.25" />
         <entry key="..\:/Projects/Android/GetTogether/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/GetTogether/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/GetTogether/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

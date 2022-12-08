@@ -19,10 +19,10 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.mainLayout, LoginFragment(applicationContext, bottomNav))
+            .add(R.id.mainLayout, LoginFragment(applicationContext))
             .commit()
 
-        setFragment(FeedFragment.newInstance())
+//        setFragment(FeedFragment.newInstance())
         bottomNav.setOnItemSelectedListener {
             if (it.itemId == R.id.feedButton)
                 setFragment(FeedFragment.newInstance())

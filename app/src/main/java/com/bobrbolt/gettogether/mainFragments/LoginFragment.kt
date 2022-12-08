@@ -16,8 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 
 class LoginFragment(
-    applicationContext: Context,
-    private val bottomNav: BottomNavigationView
+    applicationContext: Context
     ) : Fragment() {
 
     val url = "http://10.0.2.2:8080/login"
@@ -54,7 +53,12 @@ class LoginFragment(
             url,
             authJson,
             {
-                requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
+                requireActivity()
+                    .supportFragmentManager
+                    .beginTransaction()
+                    .remove(this)
+                    .replace(R.id.placeholder, FeedFragment.newInstance())
+                    .commit()
             },
             {
                 Toast.makeText(context, it.message.toString(), Toast.LENGTH_SHORT).show()
@@ -67,6 +71,6 @@ class LoginFragment(
 
     override fun onDestroy() {
         super.onDestroy()
-        bottomNav.visibility = View.VISIBLE
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav).visibility = View.VISIBLE
     }
 }
