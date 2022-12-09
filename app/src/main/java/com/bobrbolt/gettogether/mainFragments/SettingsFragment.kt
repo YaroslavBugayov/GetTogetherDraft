@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.bobrbolt.gettogether.R
+import com.bobrbolt.gettogether.loginDb.AccountDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SettingsFragment : Fragment() {
@@ -24,6 +25,12 @@ class SettingsFragment : Fragment() {
                 .commit()
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav).visibility = View.GONE
         }
+        Thread {
+            val database = AccountDatabase.getDatabase(requireActivity().applicationContext)
+            if (database.accountDao().getCount() != 0) {
+                database.accountDao().clearTable()
+            }
+        }.start()
         return inf
     }
 

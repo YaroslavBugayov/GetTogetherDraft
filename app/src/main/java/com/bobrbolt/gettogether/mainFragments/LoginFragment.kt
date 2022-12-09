@@ -2,6 +2,7 @@ package com.bobrbolt.gettogether.mainFragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,9 @@ import android.widget.Toast
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.bobrbolt.gettogether.R
+import com.bobrbolt.gettogether.loginDb.Account
+import com.bobrbolt.gettogether.loginDb.AccountDao
+import com.bobrbolt.gettogether.loginDb.AccountDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 
@@ -61,6 +65,9 @@ class LoginFragment(
                     .remove(this)
                     .replace(R.id.placeholder, FeedFragment.newInstance())
                     .commit()
+                Thread {
+                    saveToken(login, it["token"].toString())
+                }.start()
             },
             {
                 Toast.makeText(context, it.message.toString(), Toast.LENGTH_SHORT).show()
@@ -77,5 +84,15 @@ class LoginFragment(
             .beginTransaction()
             .replace(R.id.mainLayout, RegisterFragment(applicationContext))
             .commit()
+    }
+
+    private fun saveToken(login: String, token: String) {
+        Log.d("tag", "test")
+        val database = AccountDatabase.getDatabase(applicationContext)
+        if (database.accountDao().getCount() == 0) {
+            database.accountDao().insert(Account(login = login, token = token))
+        } else {
+            database.accountDao().update(Account(login = login, token = token))
+        }
     }
 }
