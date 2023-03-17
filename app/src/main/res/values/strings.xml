@@ -4,6 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="feed">Feed</string>
     <string name="map">Map</string>
+    <string name="notifications">Notifications</string>
+    <string name="Profile">Profile</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
@@ -11,4 +13,6 @@
     <string name="log_out">Log out</string>
     <string name="email">Email</string>
     <string name="get_together">Get Together</string>
+    <string name="followers">Followers</string>
+    <string name="followings">Followings</string>
 </resources>

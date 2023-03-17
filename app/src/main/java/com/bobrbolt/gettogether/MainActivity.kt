@@ -4,17 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.bobrbolt.gettogether.loginDb.Account
 import com.bobrbolt.gettogether.loginDb.AccountDatabase
-import com.bobrbolt.gettogether.mainFragments.LoginFragment
+import com.bobrbolt.gettogether.loginFragments.LoginFragment
 import com.bobrbolt.gettogether.mainFragments.MapsFragment
 import com.bobrbolt.gettogether.mainFragments.FeedFragment
-import com.bobrbolt.gettogether.mainFragments.LoadingFragment
+import com.bobrbolt.gettogether.loginFragments.LoadingFragment
+import com.bobrbolt.gettogether.mainFragments.NotificationsFragment
+import com.bobrbolt.gettogether.mainFragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 
@@ -31,15 +31,21 @@ class MainActivity : AppCompatActivity() {
         bottomNav = findViewById(R.id.bottomNav)
         bottomNav.visibility = View.GONE
 
-        openLoadingScreen()
+//        openLoadingScreen()
 
-        isLoggedIn()
+//        isLoggedIn()
+
+        // Plug
+        setFragment(FeedFragment.newInstance())
+        bottomNav.visibility = View.VISIBLE
 
         bottomNav.setOnItemSelectedListener {
-            if (it.itemId == R.id.feedButton)
-                setFragment(FeedFragment.newInstance())
-            else
-                setFragment(MapsFragment.newInstance())
+            when(it.itemId) {
+                R.id.feedButton -> setFragment(FeedFragment.newInstance())
+                R.id.mapButton -> setFragment(MapsFragment.newInstance())
+                R.id.notificationsButton -> setFragment(NotificationsFragment.newInstance())
+                R.id.profileButton -> setFragment(ProfileFragment.newInstance())
+            }
             return@setOnItemSelectedListener true
         }
     }
