@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.mainFragments
+package com.bobrbolt.gettogether.presentation.loginFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,17 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import com.bobrbolt.gettogether.R
 
-class NotificationsFragment : Fragment() {
+class LoadingFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_notifications, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_loading, container, false)
     }
 
     companion object{
         @JvmStatic
-        fun newInstance() = NotificationsFragment()
+        fun newInstance() = LoadingFragment()
     }
 }

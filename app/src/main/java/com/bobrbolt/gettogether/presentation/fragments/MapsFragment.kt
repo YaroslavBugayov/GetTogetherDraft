@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.mainFragments
+package com.bobrbolt.gettogether.presentation.fragments
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -43,7 +43,8 @@ class MapsFragment : Fragment() {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                LOCATION_REQUEST_CODE)
+                LOCATION_REQUEST_CODE
+            )
             return
         }
     }

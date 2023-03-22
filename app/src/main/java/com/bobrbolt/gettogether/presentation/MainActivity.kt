@@ -1,20 +1,24 @@
-package com.bobrbolt.gettogether
+package com.bobrbolt.gettogether.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.bobrbolt.gettogether.R
+import com.bobrbolt.gettogether.databinding.ActivityMainBinding
 import com.bobrbolt.gettogether.loginDb.AccountDatabase
-import com.bobrbolt.gettogether.loginFragments.LoginFragment
-import com.bobrbolt.gettogether.mainFragments.MapsFragment
-import com.bobrbolt.gettogether.mainFragments.FeedFragment
-import com.bobrbolt.gettogether.loginFragments.LoadingFragment
-import com.bobrbolt.gettogether.mainFragments.NotificationsFragment
-import com.bobrbolt.gettogether.mainFragments.ProfileFragment
+import com.bobrbolt.gettogether.presentation.loginFragments.LoginFragment
+import com.bobrbolt.gettogether.presentation.fragments.MapsFragment
+import com.bobrbolt.gettogether.presentation.fragments.FeedFragment
+import com.bobrbolt.gettogether.presentation.loginFragments.LoadingFragment
+import com.bobrbolt.gettogether.presentation.fragments.NotificationsFragment
+import com.bobrbolt.gettogether.presentation.fragments.ProfileFragment
+import com.bobrbolt.gettogether.presentation.viewModels.MainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 
@@ -25,10 +29,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottomNav: BottomNavigationView
     private val loadingFragment = LoadingFragment.newInstance()
 
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var vm: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        bottomNav = findViewById(R.id.bottomNav)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        vm = ViewModelProvider(this)[MainViewModel::class.java]
+
+        bottomNav = binding.bottomNav
         bottomNav.visibility = View.GONE
 
 //        openLoadingScreen()
@@ -90,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.mainLayout, LoginFragment(applicationContext))
+                .replace(binding.mainLayout.id, LoginFragment(applicationContext))
                 .commit()
         }
     }
@@ -98,14 +108,14 @@ class MainActivity : AppCompatActivity() {
     private fun openLoadingScreen() {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.mainLayout, loadingFragment)
+            .add(binding.mainLayout.id, loadingFragment)
             .commit()
     }
 
     private fun setFragment(fragment: Fragment){
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.placeholder, fragment)
+            .replace(binding.placeholder.id, fragment)
             .commit()
     }
 }

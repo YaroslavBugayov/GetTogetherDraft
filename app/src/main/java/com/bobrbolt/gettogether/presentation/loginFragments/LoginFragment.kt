@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.loginFragments
+package com.bobrbolt.gettogether.presentation.loginFragments
 
 import android.content.Context
 import android.os.Bundle
@@ -15,7 +15,7 @@ import com.android.volley.toolbox.Volley
 import com.bobrbolt.gettogether.R
 import com.bobrbolt.gettogether.loginDb.Account
 import com.bobrbolt.gettogether.loginDb.AccountDatabase
-import com.bobrbolt.gettogether.mainFragments.FeedFragment
+import com.bobrbolt.gettogether.presentation.fragments.FeedFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 

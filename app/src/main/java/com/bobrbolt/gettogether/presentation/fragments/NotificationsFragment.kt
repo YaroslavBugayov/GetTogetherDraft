@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.mainFragments
+package com.bobrbolt.gettogether.presentation.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,17 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import com.bobrbolt.gettogether.R
 
-class ProfileFragment : Fragment() {
+class NotificationsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_notifications, container, false)
     }
 
     companion object{
         @JvmStatic
-        fun newInstance() = ProfileFragment()
+        fun newInstance() = NotificationsFragment()
     }
 }
