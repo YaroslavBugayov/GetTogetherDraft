@@ -24,8 +24,8 @@ import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
-    val url = "http://10.0.2.2:8080/token"
-    private lateinit var requestQueue: RequestQueue
+//    val url = "http://10.0.2.2:8080/token"
+//    private lateinit var requestQueue: RequestQueue
     private lateinit var bottomNav: BottomNavigationView
     private val loadingFragment = LoadingFragment.newInstance()
 
@@ -60,39 +60,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun isLoggedIn() {
-        Thread {
-            requestQueue = Volley.newRequestQueue(applicationContext)
-            val database = AccountDatabase.getDatabase(applicationContext)
-            if (database.accountDao().getCount() == 0) {
-                openLoginFragment()
-            } else {
-                val login = database.accountDao().getAllAccounts().last().login
-                val token = database.accountDao().getAllAccounts().last().token
-                Log.d("test", "$login $token")
-                val authJson = JSONObject("{\"login\":\"${login}\", \"token\":\"${token}\"}")
-                val request = object : JsonObjectRequest(
-                    Method.POST,
-                    url,
-                    authJson,
-                    {
-                        runOnUiThread {
-                            supportFragmentManager
-                                .beginTransaction()
-                                .remove(loadingFragment)
-                                .commit()
-                            setFragment(FeedFragment.newInstance())
-                            bottomNav.visibility = View.VISIBLE
-                        }
-                    },
-                    {
-                        openLoginFragment()
-                    }
-                ) {}
-                requestQueue.add(request)
-            }
-        }.start()
-    }
+//    private fun isLoggedIn() {
+//        Thread {
+//            requestQueue = Volley.newRequestQueue(applicationContext)
+//            val database = AccountDatabase.getDatabase(applicationContext)
+//            if (database.accountDao().getCount() == 0) {
+//                openLoginFragment()
+//            } else {
+//                val login = database.accountDao().getAllAccounts().last().login
+//                val token = database.accountDao().getAllAccounts().last().token
+//                Log.d("test", "$login $token")
+//                val authJson = JSONObject("{\"login\":\"${login}\", \"token\":\"${token}\"}")
+//                val request = object : JsonObjectRequest(
+//                    Method.POST,
+//                    url,
+//                    authJson,
+//                    {
+//                        runOnUiThread {
+//                            supportFragmentManager
+//                                .beginTransaction()
+//                                .remove(loadingFragment)
+//                                .commit()
+//                            setFragment(FeedFragment.newInstance())
+//                            bottomNav.visibility = View.VISIBLE
+//                        }
+//                    },
+//                    {
+//                        openLoginFragment()
+//                    }
+//                ) {}
+//                requestQueue.add(request)
+//            }
+//        }.start()
+//    }
 
     private fun openLoginFragment() {
         runOnUiThread {

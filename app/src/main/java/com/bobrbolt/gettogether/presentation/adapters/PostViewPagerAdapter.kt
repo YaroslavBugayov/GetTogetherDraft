@@ -1,17 +1,38 @@
 package com.bobrbolt.gettogether.presentation.adapters
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.bobrbolt.gettogether.presentation.fragments.items.PostImageFragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bobrbolt.gettogether.R
+import com.bobrbolt.gettogether.databinding.PostImageItemBinding
 
-class PostViewPagerAdapter(fragment: FragmentActivity, private val imageList: List<String>):
-    FragmentStateAdapter(fragment) {
+class PostViewPagerAdapter: RecyclerView.Adapter<PostViewPagerAdapter.PostViewPagerHolder>() {
+
+    private var imageList = ArrayList<String>()
+
+    class PostViewPagerHolder(view: View): RecyclerView.ViewHolder(view) {
+        private val binding = PostImageItemBinding.bind(view)
+
+        fun bind(image: String) = with(binding) {
+//            imageView
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewPagerHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.post_image_item, parent, false)
+        return PostViewPagerHolder(view)
+    }
+
     override fun getItemCount(): Int {
         return imageList.size
     }
 
-    override fun createFragment(position: Int): Fragment {
-        return PostImageFragment.newInstance(imageList[position])
+    override fun onBindViewHolder(holder: PostViewPagerHolder, position: Int) {
+        holder.bind(imageList[position])
+    }
+
+    fun setImageList(list: ArrayList<String>) {
+        imageList = list
     }
 }

@@ -41,18 +41,31 @@ class FeedFragment : Fragment() {
 
         adapter.addPost(PostModel(
             authorUsername = "username1",
-            images = listOf("", ""),
+            images = arrayListOf("", ""),
             description = "description1",
-            tagged = listOf("tag1", "tag2")
+            tagged = arrayListOf("tag1", "tag2")
         ))
 
         adapter.addPost(PostModel(
             authorUsername = "username2",
-            images = listOf("", ""),
+            images = arrayListOf("", ""),
             description = "description2",
-            tagged = listOf("tag3", "tag4")
+            tagged = arrayListOf("tag3", "tag4")
         ))
-        Log.d("bindTest", adapter.itemCount.toString())
+
+        adapter.addPost(PostModel(
+            authorUsername = "username3",
+            images = arrayListOf("", ""),
+            description = "description3",
+            tagged = arrayListOf("tag3", "tag4")
+        ))
+
+        adapter.addPost(PostModel(
+            authorUsername = "username4",
+            images = arrayListOf("", ""),
+            description = "description4",
+            tagged = arrayListOf("tag3", "tag4")
+        ))
 
         return view
     }
