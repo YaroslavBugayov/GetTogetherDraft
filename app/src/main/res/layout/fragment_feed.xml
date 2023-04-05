@@ -14,7 +14,7 @@
         android:textSize="24sp"
         android:textAlignment="center"
         android:text="@string/app_name"
-        app:layout_constraintEnd_toStartOf="@+id/profileButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

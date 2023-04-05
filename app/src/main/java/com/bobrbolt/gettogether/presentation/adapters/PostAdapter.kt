@@ -1,6 +1,9 @@
 package com.bobrbolt.gettogether.presentation.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.Resources
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +15,18 @@ import com.bobrbolt.gettogether.presentation.models.PostModel
 class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     private var postList = ArrayList<PostModel>()
-    private val adapter = PostViewPagerAdapter()
 
     class PostViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val binding = PostItemBinding.bind(view)
 
-        fun bind(post: PostModel, adapter: PostViewPagerAdapter) = with(binding) {
+        @SuppressLint("SetTextI18n")
+        fun bind(post: PostModel, context: Context) = with(binding) {
             postUsernameTextView.text = post.authorUsername
-            postTaggedTextView.text = "Tagged: " + post.tagged.toString()
+            postTaggedTextView.text =
+                "${context.getString(R.string.tagged)}: " +
+                        post.tagged.joinToString { elem -> "$elem " }.trim()
             postDescriptionTextView.text = post.description
+            val adapter = PostViewPagerAdapter()
             adapter.setImageList(post.images)
             postViewPager.adapter = adapter
         }
@@ -36,7 +42,7 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bind(postList[position], adapter)
+        holder.bind(postList[position], holder.itemView.context)
     }
 
     @SuppressLint("NotifyDataSetChanged")

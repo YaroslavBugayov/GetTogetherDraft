@@ -1,10 +1,13 @@
 package com.bobrbolt.gettogether.presentation.fragments
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.bobrbolt.gettogether.R
 import com.bobrbolt.gettogether.databinding.FragmentFeedBinding
@@ -34,31 +37,33 @@ class FeedFragment : Fragment() {
         recyclerView = binding.postsRecycleView
         recyclerView.adapter = adapter
 
+        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.test_image)
+        val image = drawable!!.toBitmap()
 
         adapter.addPost(PostModel(
             authorUsername = "username1",
-            images = arrayListOf("", ""),
+            images = arrayListOf(image, image),
             description = "description1",
             tagged = arrayListOf("tag1", "tag2")
         ))
 
         adapter.addPost(PostModel(
             authorUsername = "username2",
-            images = arrayListOf("", ""),
+            images = arrayListOf(image),
             description = "description2",
             tagged = arrayListOf("tag3", "tag4")
         ))
 
         adapter.addPost(PostModel(
             authorUsername = "username3",
-            images = arrayListOf("", ""),
+            images = arrayListOf(image, image),
             description = "description3",
             tagged = arrayListOf("tag3", "tag4")
         ))
 
         adapter.addPost(PostModel(
             authorUsername = "username4",
-            images = arrayListOf("", ""),
+            images = arrayListOf(image, image, image, image),
             description = "description4",
             tagged = arrayListOf("tag3", "tag4")
         ))

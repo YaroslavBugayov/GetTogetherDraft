@@ -1,5 +1,7 @@
 package com.bobrbolt.gettogether.presentation.adapters
 
+import android.graphics.Bitmap
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +11,13 @@ import com.bobrbolt.gettogether.databinding.PostImageItemBinding
 
 class PostViewPagerAdapter: RecyclerView.Adapter<PostViewPagerAdapter.PostViewPagerHolder>() {
 
-    private var imageList = ArrayList<String>()
+    private var imageList = ArrayList<Bitmap>()
 
     class PostViewPagerHolder(view: View): RecyclerView.ViewHolder(view) {
         private val binding = PostImageItemBinding.bind(view)
 
-        fun bind(image: String) = with(binding) {
-//            imageView
+        fun bind(image: Bitmap) = with(binding) {
+            imageView.setImageBitmap(image)
         }
     }
 
@@ -32,7 +34,7 @@ class PostViewPagerAdapter: RecyclerView.Adapter<PostViewPagerAdapter.PostViewPa
         holder.bind(imageList[position])
     }
 
-    fun setImageList(list: ArrayList<String>) {
+    fun setImageList(list: ArrayList<Bitmap>) {
         imageList = list
     }
 }

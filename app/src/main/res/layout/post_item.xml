@@ -36,21 +36,31 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postUserImage">
+        app:layout_constraintTop_toBottomOf="@+id/postUserImage" />
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/imageView2"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="0dp"-->
-        <!--            android:adjustViewBounds="true"-->
-        <!--            android:scaleType="fitStart"-->
-        <!--            android:src="@drawable/test_image"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
-    </androidx.viewpager2.widget.ViewPager2>
+    <ImageButton
+        android:id="@+id/postLikeButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/heart_icon"
+        android:scaleType="centerCrop"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="@id/postViewPager"
+        app:layout_constraintBottom_toTopOf="@id/postCommentsButton" />
+
+    <ImageButton
+        android:id="@+id/postCommentsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/comments_icon"
+        android:scaleType="centerCrop"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="@id/postViewPager"
+        app:layout_constraintBottom_toBottomOf="@id/postViewPager" />
 
     <TextView
         android:id="@+id/postTaggedTextView"
@@ -69,14 +79,5 @@
         android:text="Description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postTaggedTextView" />
-
-    <Button
-        android:id="@+id/postCommentsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:text="Comments"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/postDescriptionTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
