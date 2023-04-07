@@ -1,6 +1,5 @@
 package com.bobrbolt.gettogether.presentation.fragments.loginFragments
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,9 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.bobrbolt.gettogether.R
 import com.bobrbolt.gettogether.databinding.FragmentSignUpBinding
-import com.bobrbolt.gettogether.presentation.fragments.FeedFragment
 import com.bobrbolt.gettogether.presentation.fragments.MainFragment
-import com.bobrbolt.gettogether.presentation.viewModels.MainViewModel
+import com.bobrbolt.gettogether.presentation.viewModels.ActivityViewModel
 import com.bobrbolt.gettogether.presentation.viewModels.ViewModelFactory
 import com.bobrbolt.gettogether.presentation.viewModels.loginViewModels.SignUpViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +22,7 @@ class SignUpFragment() : Fragment() {
     private lateinit var viewModel: SignUpViewModel
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var activityViewModel: MainViewModel
+    private lateinit var activityViewModel: ActivityViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +30,7 @@ class SignUpFragment() : Fragment() {
     ): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this, ViewModelFactory(FirebaseAuth.getInstance()))[SignUpViewModel::class.java]
-        activityViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        activityViewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
 
         with(binding) {
             buttonSignUpRegister.setOnClickListener { signUp() }

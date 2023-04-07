@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.bobrbolt.gettogether.R
 import com.bobrbolt.gettogether.databinding.FragmentMainBinding
-import com.bobrbolt.gettogether.presentation.viewModels.MainFragmentViewModel
+import com.bobrbolt.gettogether.presentation.viewModels.MainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainFragment : Fragment() {
 
-    private lateinit var viewModel: MainFragmentViewModel
+    private lateinit var viewModel: MainViewModel
     private lateinit var binding: FragmentMainBinding
     private lateinit var bottomNav: BottomNavigationView
 
@@ -24,10 +24,12 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         bottomNav = binding.bottomNav
 
-        viewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.placeholderFragment.observe(viewLifecycleOwner) { fragment ->
             openOnPlaceholder(fragment)
         }
+
+        viewModel.setPlaceholderFragment(FeedFragment.newInstance())
         bottomNav.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.feedButton -> viewModel.setPlaceholderFragment(FeedFragment.newInstance())
@@ -37,6 +39,7 @@ class MainFragment : Fragment() {
             }
             return@setOnItemSelectedListener true
         }
+
         return binding.root
     }
 

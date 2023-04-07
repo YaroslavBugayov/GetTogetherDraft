@@ -1,15 +1,13 @@
 package com.bobrbolt.gettogether.presentation.fragments.loginFragments
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.bobrbolt.gettogether.R
 import com.bobrbolt.gettogether.databinding.FragmentLoginBinding
-import com.bobrbolt.gettogether.presentation.viewModels.MainViewModel
+import com.bobrbolt.gettogether.presentation.viewModels.ActivityViewModel
 import com.bobrbolt.gettogether.presentation.viewModels.loginViewModels.AuthViewModel
 import com.bobrbolt.gettogether.presentation.viewModels.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +22,7 @@ class AuthFragment() : Fragment() {
     private lateinit var viewModel: AuthViewModel
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var activityViewModel: MainViewModel
+    private lateinit var activityViewModel: ActivityViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +30,7 @@ class AuthFragment() : Fragment() {
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this, ViewModelFactory(FirebaseAuth.getInstance()))[AuthViewModel::class.java]
-        activityViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        activityViewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
 
         with(binding) {
             buttonSignIn.setOnClickListener { authenticateUser() }

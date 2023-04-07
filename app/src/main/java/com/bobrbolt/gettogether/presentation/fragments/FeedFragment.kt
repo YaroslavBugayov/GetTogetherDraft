@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.bobrbolt.gettogether.R
 import com.bobrbolt.gettogether.databinding.FragmentFeedBinding
 import com.bobrbolt.gettogether.presentation.adapters.PostAdapter
 import com.bobrbolt.gettogether.presentation.viewModels.FeedViewModel
-import com.bobrbolt.gettogether.presentation.viewModels.MainViewModel
+import com.bobrbolt.gettogether.presentation.viewModels.ActivityViewModel
 
 class FeedFragment : Fragment() {
 
@@ -19,7 +18,7 @@ class FeedFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PostAdapter
     private lateinit var viewModel: FeedViewModel
-    private lateinit var activityViewModel: MainViewModel
+    private lateinit var activityViewModel: ActivityViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +44,7 @@ class FeedFragment : Fragment() {
 //            tagged = arrayListOf("tag1", "tag2")
 //        )))
 
-        activityViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        activityViewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
         binding.profileButton.setOnClickListener {
             activityViewModel.setMainLayoutFragment(SettingsFragment())
         }

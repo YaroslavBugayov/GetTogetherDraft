@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bobrbolt.gettogether.databinding.ActivityMainBinding
 import com.bobrbolt.gettogether.presentation.fragments.*
 import com.bobrbolt.gettogether.presentation.fragments.loginFragments.AuthFragment
-import com.bobrbolt.gettogether.presentation.viewModels.MainViewModel
+import com.bobrbolt.gettogether.presentation.viewModels.ActivityViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,14 +15,14 @@ class MainActivity : AppCompatActivity() {
 //    private lateinit var requestQueue: RequestQueue
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: ActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ActivityViewModel::class.java]
 
         // Observers
         viewModel.mainLayoutFragment.observe(this) { fragment ->
