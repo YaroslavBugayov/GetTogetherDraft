@@ -8,6 +8,7 @@
     <string name="Profile">Profile</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
+    <string name="password_again">Password again</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
     <string name="log_out">Log out</string>
@@ -16,4 +17,6 @@
     <string name="followers">Followers</string>
     <string name="followings">Followings</string>
     <string name="tagged">Tagged</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_with_apple_id">Sign in with Apple ID</string>
 </resources>

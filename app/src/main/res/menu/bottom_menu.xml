@@ -12,12 +12,12 @@
     </item>
     <item
         android:id="@+id/notificationsButton"
-        android:icon="@android:drawable/stat_notify_chat"
+        android:icon="@drawable/bell_icon"
         android:orderInCategory="3"
         android:title="@string/notifications" />
     <item android:id="@+id/profileButton"
         android:title="@string/Profile"
-        android:icon="@drawable/ic_baseline_map_24"
+        android:icon="@drawable/profile_icon"
         android:orderInCategory="4">
     </item>
 

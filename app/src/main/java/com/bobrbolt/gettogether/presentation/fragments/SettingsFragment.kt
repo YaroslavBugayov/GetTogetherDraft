@@ -7,32 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.bobrbolt.gettogether.R
-import com.bobrbolt.gettogether.loginDb.AccountDatabase
-import com.bobrbolt.gettogether.presentation.loginFragments.LoginFragment
+import com.bobrbolt.gettogether.databinding.FragmentSettingsBinding
+import com.bobrbolt.gettogether.presentation.fragments.loginFragments.AuthFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SettingsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val inf = inflater.inflate(R.layout.fragment_settings, container, false)
-        inf.findViewById<Button>(R.id.buttonLogOut).setOnClickListener {
+    ): View {
+        val binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        binding.buttonLogOut.setOnClickListener {
             requireActivity().supportFragmentManager
                 .beginTransaction()
-                .remove(this)
-                .add(R.id.mainLayout, LoginFragment(requireContext()))
+                .replace(R.id.mainLayout, AuthFragment())
                 .commit()
-            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav).visibility = View.GONE
         }
-        Thread {
-            val database = AccountDatabase.getDatabase(requireActivity().applicationContext)
-            if (database.accountDao().getCount() != 0) {
-                database.accountDao().clearTable()
-            }
-        }.start()
-        return inf
+        Firebase.auth.signOut()
+        return binding.root
     }
 
 }

@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.presentation.loginFragments
+package com.bobrbolt.gettogether.presentation.fragments.loginFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

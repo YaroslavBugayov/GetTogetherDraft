@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.loginDb
+package com.bobrbolt.gettogether.presentation.loginDb
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

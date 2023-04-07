@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.loginDb
+package com.bobrbolt.gettogether.presentation.loginDb
 
 import android.content.Context
 import androidx.room.Database
@@ -12,7 +12,7 @@ abstract class AccountDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: AccountDatabase ?= null
+        private var INSTANCE: AccountDatabase?= null
 
         fun getDatabase(context: Context): AccountDatabase {
             if (INSTANCE == null) {

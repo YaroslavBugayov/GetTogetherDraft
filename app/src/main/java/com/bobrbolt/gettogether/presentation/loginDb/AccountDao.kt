@@ -1,4 +1,4 @@
-package com.bobrbolt.gettogether.loginDb
+package com.bobrbolt.gettogether.presentation.loginDb
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "39454319392",
+    "project_id": "gettogether-2d386",
+    "storage_bucket": "gettogether-2d386.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39454319392:android:97bd11aaedaacdfc63ed45",
+        "android_client_info": {
+          "package_name": "com.bobrbolt.gettogether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39454319392-qmt97f0jdnevauj3opdirokfb77rvmap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABWSlAwMjZlj2XTYx0Vsn-tPqoidjmRVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39454319392-006qjqdipstc99gi8eq5q0561njv97lu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
